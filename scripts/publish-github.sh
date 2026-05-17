@@ -42,7 +42,9 @@ fi
 git_cmd branch -M main
 
 if ! git_cmd remote get-url origin >/dev/null 2>&1; then
-  gh repo create "$repo_name" --public --source . --remote origin --description "$description"
+  gh repo create "$repo_name" --public --description "$description"
+  owner="$(gh api user --jq .login)"
+  git_cmd remote add origin "https://github.com/$owner/$repo_name.git"
 fi
 
 git_cmd push -u origin main
