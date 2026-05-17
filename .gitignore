@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+out/
+release/
+*.exe
+*.blockmap
+latest.yml
+builder-debug.yml
+builder-effective-config.yaml
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and caches
+*.log
+*.log.*
+.eslintcache
+.vite/
+.cache/
+.preview/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

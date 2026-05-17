@@ -1,0 +1,536 @@
+/* 保留原有的标题栏样式 */
+.titlebar {
+    height: 35px;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    -webkit-app-region: drag;
+    cursor: move;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.titlebar .title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.content {
+    padding: 15px;
+    margin-top: 35px;
+    overflow-y: auto;
+}
+
+/* 从插件移植的样式 */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  overflow-y: auto;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap'); */
+
+.content-candidateInfo {
+  text-align: center;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.content-candidateInfo{
+  margin-top: 35px;
+}
+.content-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #4b5563;
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+h1 {
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 卡片样式 */
+.info-card {
+  text-align: left;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* 求职者信息区域样式 */
+.candidate-info {
+  margin-bottom: 24px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.info-row.full-width {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.position-container {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+.info-row:hover {
+  background: #f9fafb;
+}
+
+.label {
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.emoji {
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+}
+
+.value {
+  color: #111827;
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+  margin-left: 8px;
+  font-size: 13px;
+}
+
+/* 折叠按钮样式 */
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.info-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #f3f4f6;
+}
+
+/* 折叠状态 */
+.candidate-info.collapsed .info-card {
+  display: none;
+}
+
+.candidate-info.collapsed .toggle-btn .emoji {
+  content: "📂";
+}
+
+/* 分析按钮区域 */
+.analysis-card {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+}
+
+/* 分析结果区域样式 */
+.analysis-results {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Markdown内容样式 */
+.analysis-results h1,
+.analysis-results h2,
+.analysis-results h3 {
+  color: #111827;
+  margin: 1em 0 0.5em 0;
+  font-weight: 600;
+}
+
+.analysis-results p {
+  margin: 0.8em 0;
+}
+
+.analysis-results ul,
+.analysis-results ol {
+  padding-left: 1.5em;
+  margin: 0.8em 0;
+}
+
+.analysis-results li {
+  margin: 0.4em 0;
+}
+
+.analysis-results pre {
+  background: #f9fafb;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-family: 'Inter', monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.analysis-results code {
+  font-family: 'Inter', monospace;
+  background: #f3f4f6;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.analysis-results blockquote {
+  border-left: 3px solid #e5e7eb;
+  padding-left: 12px;
+  margin: 1em 0;
+  color: #4b5563;
+}
+
+.analysis-results table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.analysis-results th,
+.analysis-results td {
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.analysis-results th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+.notion-btn {
+  background: white;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.notion-btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notion-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+#aiAnalyzeBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#aiAnalyzeBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Notion风格追问话术样式 */
+.notion-followup {
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.notion-header {
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notion-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.notion-icon {
+  font-size: 16px;
+}
+
+.notion-options {
+  padding: 8px 0;
+}
+
+.notion-option {
+  position: relative;
+  padding: 12px 16px 12px 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 8px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.notion-option::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.notion-option:hover::before,
+.notion-selected::before {
+  content: "❓";
+  font-size: 16px;
+  opacity: 1;
+}
+
+.notion-option:hover {
+  background: #f0fdf4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: #10b981;
+}
+
+.notion-option:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notion-content {
+  font-size: 14px;
+  color: #111827;
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+.notion-selected {
+  background: #f0fdf4;
+  border: 1px solid #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+.notion-options .notion-option.notion-selected ~ .notion-option.notion-selected,
+.notion-options .notion-option.notion-selected + .notion-option.notion-selected {
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 浮动式滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+}
+
+/* 滚动时显示滚动条 */
+:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
+}
+
+/* 牛人打招呼区域样式 */
+.content-greeting {
+  margin-top: 20px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.greeting-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#greetingText {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  min-height: 300px;
+}
+
+#greetingText:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.rating-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.rating-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rating-option:hover {
+  background: #f3f4f6;
+}
+
+.rating-option input {
+  margin: 0;
+}
+
+.rating-option .text {
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.notion-btn.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.notion-btn.success {
+  background: #10b981;
+  color: white;
+}
+
+.notion-btn.error {
+  background: #ef4444;
+  color: white;
+}

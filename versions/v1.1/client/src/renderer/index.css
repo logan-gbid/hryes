@@ -1,0 +1,89 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* titlebar */
+.titlebar {
+    height: 48px;
+    background: #ffffff;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.titlebar .left {
+    display: flex;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'LongZhuTi';
+    src: url('LongZhuTi-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.titlebar .left .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    transition: transform 0.2s ease;
+}
+
+.titlebar .left .title {
+    font-family: 'LongZhuTi', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    /* background: linear-gradient(90deg, #3a7bd5, #00d2ff); */
+    background-color: #3d3d3d;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.titlebar .controls {
+    display: flex;
+    gap: 8px;
+}
+
+.titlebar .controls div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+.titlebar .controls .toggle-child {
+
+    width: 20px;
+    height: 20px;
+    background-color: #8aefff;
+    margin-right: 20px;
+    font-size: small;
+}
+
+.titlebar .controls .min {
+    background-color: rgb(248, 248, 177);
+}
+
+.titlebar .controls .max {
+    background-color: rgb(234, 254, 204);
+}
+
+.titlebar .controls .close {
+    background-color: rgb(255, 182, 182);
+}

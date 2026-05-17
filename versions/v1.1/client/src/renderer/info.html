@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="info.css">
+</head>
+
+<body>
+  <!-- 可拖动标题栏 -->
+  <div class="titlebar" id="titlebar">
+    <div class="title">🚀 Boss直聘AI助手</div>
+  </div>
+  <!-- content 初始状态 -->
+  <div class="content-loading">
+    <div class="loading-spinner">🐟</div>
+    <div class="loading-text">准备中，请登录招聘端账号</div>
+  </div>
+  <!-- content AI候选人聊天区分析 -->
+  <div class="content-candidateInfo" style="display: none;">
+
+    <!-- 求职者信息展示区域 -->
+    <div id="candidateInfoSection" class="candidate-info">
+      <div class="info-header">
+        <h2>求职者信息</h2>
+        <button id="toggleInfoBtn" class="toggle-btn">
+          <span class="emoji">📦</span>
+          <span class="text">收起</span>
+        </button>
+      </div>
+      <div class="info-card">
+        <div class="info-row" data-type="name">
+          <span class="emoji">👤</span>
+          <span class="label">姓名：</span>
+          <span id="candidateName" class="value">-</span>
+        </div>
+        <div class="info-row" data-type="gender">
+          <span class="emoji">🚻</span>
+          <span class="label">性别：</span>
+          <span id="candidateGender" class="value">-</span>
+        </div>
+        <div class="info-row" data-type="age">
+          <span class="emoji">🎂</span>
+          <span class="label">年龄：</span>
+          <span id="candidateAge" class="value">-</span>
+        </div>
+        <div class="info-row" data-type="experience">
+          <span class="emoji">💼</span>
+          <span class="label">工作年限：</span>
+          <span id="candidateExperience" class="value">-</span>
+        </div>
+        <div class="info-row" data-type="education">
+          <span class="emoji">🎓</span>
+          <span class="label">学历：</span>
+          <span id="candidateEducation" class="value">-</span>
+        </div>
+        <div class="info-row" data-type="salary">
+          <span class="emoji">💰</span>
+          <span class="label">期望薪资：</span>
+          <span class="value" id="candidateSalary">-</span>
+        </div>
+        <div class="position-container">
+          <div class="info-row full-width" data-type="position">
+            <span class="emoji">📌</span>
+            <span class="label">期望岗位：</span>
+            <span class="value" id="candidatePosition">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- AI分析按钮区域 -->
+    <div class="analysis-card">
+      <button id="aiAnalyzeBtn" class="notion-btn">
+        <span class="emoji">🚀</span>
+        <span class="text">AI分析简历</span>
+      </button>
+    </div>
+
+    <!-- AI分析结果展示区域 -->
+    <div id="analysisResults" class="analysis-results ">hello</div>
+  </div>
+  <!-- content 牛人打招呼 -->
+  <div class="content-greeting" style="display: none;">
+    <div class="greeting-card">
+      <textarea id="greetingText" placeholder="输入🗺[人才画像]..." rows="4"></textarea>
+
+      <div class="rating-options">
+        <label class="rating-option">
+          <input type="checkbox" name="rating" value="strong">
+          <span class="emoji">⭐</span>
+          <span class="text">强烈推荐</br>(8-10分)</span>
+        </label>
+        <label class="rating-option">
+          <input type="checkbox" name="rating" value="recommend">
+          <span class="emoji">✅</span>
+          <span class="text">建议继续沟通</br>(5-7分)</span>
+        </label>
+        <label class="rating-option">
+          <input type="checkbox" name="rating" value="caution">
+          <span class="emoji">⚠️</span>
+          <span class="text">需谨慎考虑</br>(3-4分)</span>
+        </label>
+        <label class="rating-option">
+          <input type="checkbox" name="rating" value="reject">
+          <span class="emoji">❌</span>
+          <span class="text">不合适</br>(0-2分)</span>
+        </label>
+      </div>
+
+      <button id="sendGreetingBtn" class="notion-btn">
+        <span class="emoji">📤</span>
+        <span class="text">发送打招呼</span>
+      </button>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- <script src="./marked.min.js"></script> -->
+  <script type="module" src="./info.js" defer></script>
+  
+</body>
+
+</html>
